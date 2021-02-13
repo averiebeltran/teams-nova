@@ -1,7 +1,8 @@
+const Badge = require("./src/badge");
+
 const inquirer = require("inquirer");
 const fs = require("fs");
 
-const Employee = require("./lib/employee");
 const Engineer = require("./lib/engineer");
 const Intern = require("./lib/intern");
 const Manager = require("./lib/manager");
@@ -139,7 +140,7 @@ function addEngineer(){
 
 function compileTeam(){
     teamMembersArray.forEach(teamMember => {
-        
+        const badge = new Badge(teamMember);
     })
 }
 
