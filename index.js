@@ -141,7 +141,34 @@ function addEngineer(){
 function compileTeam(){
     teamMembersArray.forEach(teamMember => {
         const badge = new Badge(teamMember);
-    })
+    });
+
+    const template = `
+        <!doctype html>
+        <html lang="en">
+            <head>
+                <meta charset="utf-8">
+                <title>Team Generator</title>
+                <link rel="stylesheet" href="css/styles.css?v=1.0">
+            </head>
+            <body>
+                <section>My Team</section>
+                <section class="team-list">`
+                    teamMembersArray.forEach(teamMember => {
+                        const badge = new Badge(teamMember);
+                    });
+                `</section>
+            </body>
+        </html>
+    `;
+
+    console.log(template);
+
+    fs.writeFile(`./dist/generatedHtml.html`, template, function(error){
+        if (error){
+            console.log(error);
+        }
+    });
 }
 
 createManager();
