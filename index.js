@@ -33,7 +33,28 @@ function createManager(){
         const id = 1;
         const teamMember = new Manager(name, email, officeNumber, id);
         teamMembersArray.push(teamMember);
-        createTeamMember();
+        addTeamMember();
+    })
+}
+
+function addTeamMember(){
+    inquirer.prompt([
+        {
+            type: "list",
+            message: "Do you want to add a team member?",
+            choices: ["Yes", "No, I'm done."],
+            name: "addMember"
+        }
+    ])
+    .then(function(data){
+        switch(data.addMember){
+            case "Yes":
+                createTeamMember();
+                break;
+            case "No, I'm done.":
+                compileTeam();
+                break;
+        }
     })
 }
 
@@ -83,6 +104,7 @@ function addIntern(){
         const id = teamMembersArray.length + 1;
         const teamMember = new Intern(name, email, school, id);
         teamMembersArray.push(teamMember);
+        addTeamMember();
     })
 }
 
@@ -111,6 +133,13 @@ function addEngineer(){
         const id = teamMembersArray.length + 1;
         const teamMember = new Engineer(name, email, github, id);
         teamMembersArray.push(teamMember);
+        addTeamMember();
+    })
+}
+
+function compileTeam(){
+    teamMembersArray.forEach(teamMember => {
+        
     })
 }
 
