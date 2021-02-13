@@ -1,0 +1,117 @@
+const inquirer = require("inquirer");
+const fs = require("fs");
+
+const Employee = require("./lib/employee");
+const Engineer = require("./lib/engineer");
+const Intern = require("./lib/intern");
+const Manager = require("./lib/manager");
+
+let teamMembersArray = [];
+
+function createManager(){
+    inquirer.prompt([
+        {
+            type: "input",
+            message: "What is your team managers name?",
+            name: "name"
+        },
+        {
+            type: "input",
+            message: "What is your team managers email?",
+            name: "email"
+        },
+        {
+            type: "number",
+            message: "What is your managers office number?",
+            name: "officeNumber"
+        }
+    ])
+    .then(function(data) {
+        const name = data.name;
+        const email = data.email;
+        const officeNumber = data.officeNumber;
+        const id = 1;
+        const teamMember = new Manager(name, email, officeNumber, id);
+        teamMembersArray.push(teamMember);
+        createTeamMember();
+    })
+}
+
+function createTeamMember(){
+    inquirer.prompt([
+        {
+            type: "list",
+            message: "Is this employee an intern or engineer?",
+            choices: ["Intern", "Engineer"],
+            name: "jobTitle"
+        }
+    ])
+    .then(function(data){
+        switch(data.jobTitle){
+            case "Intern":
+                addIntern();
+                break;
+            case "Engineer":
+                addEngineer();
+                break;
+        }
+    })
+}
+
+function addIntern(){
+    inquirer.prompt([
+        {
+            type: "input",
+            message: "What is the Intern's name?",
+            name: "name"
+        },
+        {
+            type: "input",
+            message: "What is the Intern's email address?",
+            name: "email"
+        },
+        {
+            type: "input",
+            message: "Where does the Intern go to school?",
+            name: "school"
+        }
+    ])
+    .then(function(data){
+        const name = data.name;
+        const email = data.email;
+        const school = data.school;
+        const id = teamMembersArray.length + 1;
+        const teamMember = new Intern(name, email, school, id);
+        teamMembersArray.push(teamMember);
+    })
+}
+
+function addEngineer(){
+    inquirer.prompt([
+        {
+            type: "input",
+            message: "What is the Engineer's name?",
+            name: "name"
+        },
+        {
+            type: "input",
+            message: "What is the Engineer's email address?",
+            name: "email"
+        },
+        {
+            type: "input",
+            message: "What is the Engineer's GitHub username?",
+            name: "github"
+        }
+    ])
+    .then(function(data){
+        const name = data.name;
+        const email = data.email;
+        const github = data.github;
+        const id = teamMembersArray.length + 1;
+        const teamMember = new Engineer(name, email, github, id);
+        teamMembersArray.push(teamMember);
+    })
+}
+
+createManager();
