@@ -11,4 +11,4 @@ Sample HTML populated from live server via VS Code http://127.0.0.1:5500/dist/ge
 https://drive.google.com/file/d/17if5i1Viv15gCPIUAWxgQk8QFlwe5eED/view
 
 Team Generator Image:
-https://i.postimg.cc/dVF54Ydr/Team-Generator.png
+[Team-Generator.png](https://postimg.cc/6yHVpFMp)
