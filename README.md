@@ -6,6 +6,7 @@ How a user would invoke the application from the command line.
 How a user would enter responses to all of the prompts in the application. 
 Populates a generated HTML file that matches the user input.
 
+Sample HTML populated from from live server http://127.0.0.1:5500/dist/generatedHtml.html
 
 https://drive.google.com/file/d/17if5i1Viv15gCPIUAWxgQk8QFlwe5eED/view
 
