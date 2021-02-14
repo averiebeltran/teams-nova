@@ -32,7 +32,7 @@ function createManager(){
         const email = data.email;
         const officeNumber = data.officeNumber;
         const id = 1;
-        const teamMember = new Manager(name, email, officeNumber, id);
+        const teamMember = new Manager(name, id, email, officeNumber);
         teamMembersArray.push(teamMember);
         addTeamMember();
     })
@@ -103,7 +103,7 @@ function addIntern(){
         const email = data.email;
         const school = data.school;
         const id = teamMembersArray.length + 1;
-        const teamMember = new Intern(name, email, school, id);
+        const teamMember = new Intern(name, id, email, school);
         teamMembersArray.push(teamMember);
         addTeamMember();
     })
@@ -132,39 +132,35 @@ function addEngineer(){
         const email = data.email;
         const github = data.github;
         const id = teamMembersArray.length + 1;
-        const teamMember = new Engineer(name, email, github, id);
+        const teamMember = new Engineer(name, id, email, github);
         teamMembersArray.push(teamMember);
         addTeamMember();
     })
 }
 
 function compileTeam(){
+    let badge;
     teamMembersArray.forEach(teamMember => {
-        const badge = new Badge(teamMember);
+        badge = new Badge(teamMember);
     });
 
     const template = `
-        <!doctype html>
-        <html lang="en">
-            <head>
-                <meta charset="utf-8">
-                <title>Team Generator</title>
-                <link rel="stylesheet" href="css/styles.css?v=1.0">
-            </head>
-            <body>
-                <section>My Team</section>
-                <section class="team-list">`
-                    teamMembersArray.forEach(teamMember => {
-                        const badge = new Badge(teamMember);
-                    });
-                `</section>
-            </body>
-        </html>
-    `;
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Team Generator</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    </head>
+    <body>
+        <section class="navbar navbar-dark bg-dark mb-5">
+            <h1 class="navbar-brand">My Team</h1>
+        </section>
+        <section class="container team-list col-12">` + badge.template + `</section>
+    </body>
+</html>`;
 
-    console.log(template);
-
-    fs.writeFile(`./dist/generatedHtml.html`, template, function(error){
+    fs.writeFileSync(`./dist/generatedHtml.html`, template, function(error){
         if (error){
             console.log(error);
         }
