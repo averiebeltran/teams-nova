@@ -9,4 +9,5 @@ Populates a generated HTML file that matches the user input.
 
 https://drive.google.com/file/d/17if5i1Viv15gCPIUAWxgQk8QFlwe5eED/view
 
-example: http://127.0.0.1:5500/dist/generatedHtml.html
+Team Generator Image:
+https://i.postimg.cc/dVF54Ydr/Team-Generator.png
