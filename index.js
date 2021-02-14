@@ -139,9 +139,11 @@ function addEngineer(){
 }
 
 function compileTeam(){
+    let badges = [];
     let badge;
     teamMembersArray.forEach(teamMember => {
         badge = new Badge(teamMember);
+        badges.push(badge.template);
     });
 
     const template = `
@@ -156,7 +158,7 @@ function compileTeam(){
         <section class="navbar navbar-dark bg-dark mb-5">
             <h1 class="navbar-brand">My Team</h1>
         </section>
-        <section class="container team-list col-12">` + badge.template + `</section>
+        <section class="container team-list col-12">` + badges + `</section>
     </body>
 </html>`;
 
