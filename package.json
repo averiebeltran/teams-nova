@@ -1,4 +1,25 @@
 {
+  "name": "teams-nova",
+  "version": "1.0.0",
+  "description": "Unit 10 homework",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/averiebeltran/teams-nova.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/averiebeltran/teams-nova/issues"
+  },
+  "homepage": "https://github.com/averiebeltran/teams-nova#readme",
   "dependencies": {
     "inquirer": "^7.3.3"
   },
